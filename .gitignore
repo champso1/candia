@@ -1,0 +1,7 @@
+.clang-format
+*.o
+*.x
+
+GPATH
+GRTAGS
+GPATH

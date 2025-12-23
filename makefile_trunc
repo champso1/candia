@@ -1,0 +1,22 @@
+OBJS=candia_trunc.o partonww.o a02m.o hplog.o xpns2p.o xpij2p.o
+CC=gcc
+FC=gfortran
+
+.c.o:
+	$(CC) -c $*.c
+
+.f.o:
+	$(FC) -std=legacy -w -c -O3 $*.f -fPIC
+
+candia_trunc.x: $(OBJS)
+	$(FC) -std=legacy -O3 -o candia_trunc.x $(OBJS) -fPIE
+
+clean:
+	rm -f *.o  *.x
+
+candia_trunc.o: candia_trunc.c constants.h
+hplog.o: hplog.f
+xpns2p.o: xpns2p.f
+xpij2p.o: xpij2p.f
+partonww.o: partonww.f
+a02m.o: a02m.f
