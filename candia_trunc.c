@@ -164,7 +164,8 @@ int main(int argc,char *argv[])
 	}
 
 	//kr=mu_r^2/mu_f^2
-	kr=atof(argv[4]);
+        kr = atof(argv[4]);
+		log_mf2_mr2 = -log(kr);
 
 	if (kr==0.)
 	{

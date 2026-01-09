@@ -171,7 +171,8 @@ int main(int argc,char *argv[])
 	}
 
 	//kr=mu_r^2/mu_f^2
-	kr=atof(argv[4]);
+        kr = atof(argv[4]);
+		log_mf2_mr2 = -log(kr);
 
 	if (kr==0.)
 	{
@@ -795,8 +796,6 @@ int main(int argc,char *argv[])
 
 		beta=Beta(order,alpha1);
 
-		log_mf2_mr2=log(1./kr);
-
 		//Solving recursively DGLAP equations for the current evolution step
 
 		if (alpha0!=alpha1)
@@ -977,9 +976,9 @@ int main(int argc,char *argv[])
 
 				aux=4.*beta0*beta2-beta1*beta1;
 				if (aux>=0)
-					L3=atan(2.*Pi*(alpha1-alpha0)*sqrt(aux)/(2.*Pi*(8.*Pi*beta0+(alpha1+alpha0))+alpha1*alpha0*beta2))/sqrt(aux);
+					L3=atan(2.*Pi*(alpha1-alpha0)*sqrt(aux)/(2.*Pi*(8.*Pi*beta0+(alpha1+alpha0)*beta1)+alpha1*alpha0*beta2))/sqrt(aux);
 				else
-					L3=atanh(2.*Pi*(alpha1-alpha0)*sqrt(-aux)/(2.*Pi*(8.*Pi*beta0+(alpha1+alpha0))+alpha1*alpha0*beta2))/sqrt(-aux);
+					L3=atanh(2.*Pi*(alpha1-alpha0)*sqrt(-aux)/(2.*Pi*(8.*Pi*beta0+(alpha1+alpha0)*beta1)+alpha1*alpha0*beta2))/sqrt(-aux);
 
 				//Singlet
 				for (j=0;j<=1;j++)
